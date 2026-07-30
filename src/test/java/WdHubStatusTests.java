@@ -33,7 +33,47 @@ public class WdHubStatusTests extends TestBase{
                 .statusCode(401);
 /*                .body(matchesJsonSchemaInClasspath("schemas/status.response_schema.json"))
                 .body("total", is(25));*/
+    }
 
+    @Test
+    public void statusSchemaTest() {
+        given()
+                .log().all()
+                .auth().preemptive().basic("user1", "1234")
+                .when()
+                .get("/wd/hub/status")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body(matchesJsonSchemaInClasspath("schemas/status_whHub.responce_schema.json"));
+
+    }
+
+    @Test
+    public void checkSelenoidStatusAndVersion() {
+        given()
+                .log().all()
+                .auth().preemptive().basic("user1", "1234")
+                .when()
+                .get("/wd/hub/status")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("value.message", is("Selenoid v3.0.6 built at 2026-07-30_10:38:44AM"));
+
+    }
+
+    @Test
+    public void shouldReturnReadyStatus() {
+        given()
+                .log().all()
+                .auth().preemptive().basic("user1", "1234")
+                .when()
+                .get("/wd/hub/status")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("value.ready", is(true));
 
     }
 }

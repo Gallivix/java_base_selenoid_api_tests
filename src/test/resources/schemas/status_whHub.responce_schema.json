@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Информационное сообщение о версии Selenoid и времени сборки",
+          "pattern": "^Selenoid v\\d+\\.\\d+\\.\\d+ built at \\d{4}-\\d{2}-\\d{2}_\\d{2}:\\d{2}:\\d{2}[AP]M$"
+        },
+        "ready": {
+          "type": "boolean",
+          "description": "Статус готовности Selenoid к работе"
+        }
+      },
+      "required": ["message", "ready"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["value"],
+  "additionalProperties": false
+}
