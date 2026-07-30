@@ -16,10 +16,6 @@ public class WdHubStatusTests extends TestBase{
                 .then()
                 .log().all()
                 .statusCode(200);
-/*                .body(matchesJsonSchemaInClasspath("schemas/status.response_schema.json"))
-                .body("total", is(25));*/
-
-
     }
 
     @Test
@@ -31,8 +27,6 @@ public class WdHubStatusTests extends TestBase{
                 .then()
                 .log().all()
                 .statusCode(401);
-/*                .body(matchesJsonSchemaInClasspath("schemas/status.response_schema.json"))
-                .body("total", is(25));*/
     }
 
     @Test
